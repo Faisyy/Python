@@ -2,6 +2,7 @@ import customtkinter as ctk
 from tkinter import filedialog
 import threading
 from logger import init_logger, log_info
+from detector import reset_state
 
 # Theme
 ctk.set_appearance_mode("dark")
@@ -179,6 +180,7 @@ class IDSApp(ctk.CTk):
         self.lbl_status.configure(text="Status: Idle", text_color="#888888")
         self._log("Log cleared. IDS ready.")
         self.progress_bar.set(0)
+        reset_state()
 
 
 if __name__ == "__main__":
