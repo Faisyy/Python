@@ -12,7 +12,7 @@ udp_tracker   = defaultdict(list)
 # ─── Thresholds ───────────────────────────────────────────────────────────────
 TIME_WINDOW     = 5
 SYN_THRESHOLD   = 100
-ICMP_THRESHOLD  = 5
+ICMP_THRESHOLD  = 50
 PORT_THRESHOLD  = 15
 UDP_THRESHOLD   = 100
 
