@@ -19,6 +19,7 @@ class FakeApp:
 
 class DetectorTests(unittest.TestCase):
     def setUp(self):
+        detector.reset_detection_config()
         detector.reset_state()
         self._original_file_log = detector.file_log
         detector.file_log = lambda message: None
@@ -26,6 +27,7 @@ class DetectorTests(unittest.TestCase):
 
     def tearDown(self):
         detector.file_log = self._original_file_log
+        detector.reset_detection_config()
         detector.reset_state()
 
     def _detect_many(self, packet, count):
@@ -125,6 +127,25 @@ class DetectorTests(unittest.TestCase):
         self.assertFalse(detector.port_tracker)
         self.assertFalse(detector.arp_tracker)
         self.assertFalse(detector._last_alert)
+
+    def test_disabled_detection_rule_does_not_alert(self):
+        detector.configure_detection(enabled={"tcp_flag": False})
+        packet = IP(src="10.0.0.15", dst="10.0.0.20") / TCP(dport=80, flags="F")
+
+        detector.detect(packet, self.app)
+
+        self.assertFalse(self.app.alerts)
+
+    def test_configure_detection_updates_thresholds_and_reset_restores_defaults(self):
+        detector.configure_detection(thresholds={"syn_threshold": 2, "alert_cooldown": 5})
+
+        self.assertEqual(detector.SYN_THRESHOLD, 2)
+        self.assertEqual(detector.ALERT_COOLDOWN, 5)
+
+        detector.reset_detection_config()
+
+        self.assertEqual(detector.SYN_THRESHOLD, detector.DEFAULT_THRESHOLDS["syn_threshold"])
+        self.assertEqual(detector.ALERT_COOLDOWN, detector.DEFAULT_THRESHOLDS["alert_cooldown"])
 
 
 if __name__ == "__main__":

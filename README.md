@@ -12,6 +12,17 @@ Important: this IDS is for controlled lab and educational use. Alerts should be 
 - PCAP/PCAPNG file analysis.
 - Timestamped alert logging.
 - Packet and alert counters.
+- Real-time attack dashboard with category counters and alert mix chart.
+- Packets-per-second graph, adapter diagnostics, and top source IP panel.
+- Recent alerts table with severity, type, source, destination, and details.
+- Alert review notes for marking rows as `Needs Review`, `Confirmed`, or `False Positive`.
+- CSV export for the current session's alerts.
+- Optional sound notification when an alert is detected.
+- High severity banner with a **Noted** dismiss button.
+- Alert table filters by severity and alert type.
+- Session summary export for report evidence.
+- Detection Settings tab for enabling/disabling rule groups and tuning thresholds.
+- PCAP Replay tab for fast, normal, or slow PCAP playback during demonstrations.
 - Rule-based detection for:
   - DoS-style SYN flood behaviour
   - DoS-style ICMP flood behaviour
@@ -73,8 +84,19 @@ For live sniffing, run PowerShell, Command Prompt, or the batch file as Administ
 3. Use **Start Live Sniff** to monitor live traffic.
 4. Use **Load PCAP** to analyze a `.pcap` or `.pcapng` file.
 5. Watch **Packets Captured**, **Alerts**, and the alert log.
-6. Use **Stop** to stop live sniffing or interrupt analysis.
-7. Use **Clear Log** to reset the visible counters and detector state.
+6. Use the **Sound Alert** toggle to enable or disable alert sounds, and the sound button to select an `.mp3`, `.wav`, or `.wma` file.
+7. Use **Stop** to stop live sniffing or interrupt analysis.
+8. Use filters in **Recent Alerts** to show alerts by severity or attack type.
+9. Mark selected alerts as `Confirmed`, `False Positive`, or `Needs Review` with optional notes.
+10. Use **Export CSV** to save the current session's recent alerts to `exports/`; the exports folder opens after export.
+11. Use **Export Summary** to save a text report with packet counts, alert counts, top sources, and recent alerts.
+12. Use the **Detection Settings** tab to toggle rule groups or tune thresholds.
+13. Use the **PCAP Replay** tab to choose Fast, Normal, or Slow PCAP analysis speed.
+14. Use **Clear Log** to reset the visible counters, dashboard, recent alerts table, and detector state.
+
+Clicking **Stop** automatically saves a session summary to `exports/`.
+
+Sound notifications are configured in the **Sound Settings** tab. The default alert sound is `amongus.mp3`. High severity alerts also show a banner and play `vineboom.mp3`. If a sound file is missing, the app logs an error instead of stopping.
 
 If Kali is attacking the Windows IDS machine, choose the adapter with the Windows IP address that Kali is targeting. For VirtualBox or VMware labs, this is often a host-only, bridged, VMware, VirtualBox, or Ethernet adapter.
 
@@ -142,6 +164,8 @@ SUSPICIOUS_PORTS = {4444, 1337, 31337, 6666, 9001}
 TRUSTED_IPS = set()
 ```
 
+The same thresholds can be adjusted from the GUI in the **Detection Settings** tab. Applying settings resets detector state so old counters do not affect the new configuration.
+
 To add a new rule:
 
 1. Add a `_check_*` function in `detector.py`.
@@ -168,7 +192,7 @@ The `attacks/` folder contains Python scripts that can be run from Kali VM to ge
 Example:
 
 ```bash
-sudo python3 attacks/syn_flood.py --target 192.168.56.10
+sudo python3 attacks/syn_flood.py --target 192.168.0.137
 ```
 
 Recommended evidence to collect for each test category:
@@ -202,3 +226,4 @@ Do not run attack-style tests against public IPs, university servers, websites, 
 - It detects suspicious indicators, not confirmed malware, reverse shells, or MITM attacks.
 - Thresholds may need tuning for busy networks.
 - Wireshark or another packet analysis tool should be used to verify important alerts.
+

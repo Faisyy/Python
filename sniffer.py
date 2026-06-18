@@ -1,4 +1,5 @@
 import threading
+import time
 
 from scapy.all import PcapReader, get_if_list, sniff
 
@@ -68,7 +69,7 @@ def stop_sniff():
     _stop_flag.set()
 
 
-def analyse_pcap(filepath, app):
+def analyse_pcap(filepath, app, replay_delay=0):
     try:
         app._log("[*] Starting analysis...")
         app.start_progress_animation()
@@ -80,6 +81,8 @@ def analyse_pcap(filepath, app):
                     break
                 _process_packet(packet, app)
                 count += 1
+                if replay_delay > 0:
+                    time.sleep(replay_delay)
                 if count % 1000 == 0:
                     app._log(f"[*] Processed {count} packets...")
 

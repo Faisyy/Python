@@ -88,10 +88,10 @@ ip addr
 Use a private lab IP, for example:
 
 ```text
-192.168.56.10
+192.168.0.137
 ```
 
-In the examples below, replace `192.168.56.10` with your own lab target IP.
+In the examples below, replace `192.168.0.137` with your own lab target IP.
 
 ## 5. Run Each Sample Case
 
@@ -108,13 +108,13 @@ DoS Detected: SYN Flood behaviour
 Command:
 
 ```bash
-sudo python3 attacks/syn_flood.py --target 192.168.56.10
+sudo python3 attacks/syn_flood.py --target 192.168.0.137
 ```
 
 Optional settings:
 
 ```bash
-sudo python3 attacks/syn_flood.py --target 192.168.56.10 --port 80 --count 130 --interval 0.01
+sudo python3 attacks/syn_flood.py --target 192.168.0.137 --port 80 --count 130 --interval 0.01
 ```
 
 ### ICMP Flood / DoS Sample
@@ -128,13 +128,13 @@ DoS Detected: ICMP Flood behaviour
 Command:
 
 ```bash
-sudo python3 attacks/icmp_flood.py --target 192.168.56.10
+sudo python3 attacks/icmp_flood.py --target 192.168.0.137
 ```
 
 Optional settings:
 
 ```bash
-sudo python3 attacks/icmp_flood.py --target 192.168.56.10 --count 70 --interval 0.01
+sudo python3 attacks/icmp_flood.py --target 192.168.0.137 --count 70 --interval 0.01
 ```
 
 ### UDP Flood / DoS Sample
@@ -148,13 +148,13 @@ DoS Detected: UDP Flood behaviour
 Command:
 
 ```bash
-sudo python3 attacks/udp_flood.py --target 192.168.56.10
+sudo python3 attacks/udp_flood.py --target 192.168.0.137
 ```
 
 Optional settings:
 
 ```bash
-sudo python3 attacks/udp_flood.py --target 192.168.56.10 --port 5353 --count 130 --interval 0.01
+sudo python3 attacks/udp_flood.py --target 192.168.0.137 --port 5353 --count 130 --interval 0.01
 ```
 
 ### Port Scan Sample
@@ -168,13 +168,13 @@ PORT SCAN detected
 Command:
 
 ```bash
-sudo python3 attacks/port_scan.py --target 192.168.56.10
+sudo python3 attacks/port_scan.py --target 192.168.0.137
 ```
 
 Optional settings:
 
 ```bash
-sudo python3 attacks/port_scan.py --target 192.168.56.10 --start-port 20 --ports 20 --interval 0.02
+sudo python3 attacks/port_scan.py --target 192.168.0.137 --start-port 20 --ports 20 --interval 0.02
 ```
 
 The IDS threshold is more than 15 unique TCP destination ports within 5 seconds, so the default `--ports 20` should trigger it.
@@ -192,21 +192,21 @@ TCP Flag Scan Detected: XMAS scan pattern
 Run all three scan types:
 
 ```bash
-sudo python3 attacks/tcp_flag_scan.py --target 192.168.56.10
+sudo python3 attacks/tcp_flag_scan.py --target 192.168.0.137
 ```
 
 Run only one scan type:
 
 ```bash
-sudo python3 attacks/tcp_flag_scan.py --target 192.168.56.10 --scan fin
-sudo python3 attacks/tcp_flag_scan.py --target 192.168.56.10 --scan null
-sudo python3 attacks/tcp_flag_scan.py --target 192.168.56.10 --scan xmas
+sudo python3 attacks/tcp_flag_scan.py --target 192.168.0.137 --scan fin
+sudo python3 attacks/tcp_flag_scan.py --target 192.168.0.137 --scan null
+sudo python3 attacks/tcp_flag_scan.py --target 192.168.0.137 --scan xmas
 ```
 
 Optional settings:
 
 ```bash
-sudo python3 attacks/tcp_flag_scan.py --target 192.168.56.10 --scan all --port 80 --repeat 1
+sudo python3 attacks/tcp_flag_scan.py --target 192.168.0.137 --scan all --port 80 --repeat 1
 ```
 
 ### Possible Reverse Shell Indicator Sample
@@ -220,13 +220,13 @@ Possible Reverse Shell Indicator
 Command:
 
 ```bash
-sudo python3 attacks/reverse_shell_indicator.py --target 192.168.56.10
+sudo python3 attacks/reverse_shell_indicator.py --target 192.168.0.137
 ```
 
 Optional settings:
 
 ```bash
-sudo python3 attacks/reverse_shell_indicator.py --target 192.168.56.10 --port 4444 --count 3
+sudo python3 attacks/reverse_shell_indicator.py --target 192.168.0.137 --port 4444 --count 3
 ```
 
 This script does not create a reverse shell. It only sends TCP traffic to a suspicious port so the IDS can flag the indicator.
@@ -247,15 +247,15 @@ Use this only on an isolated lab network. You need:
 Example:
 
 ```bash
-sudo python3 attacks/arp_spoof_lab.py --claimed-ip 192.168.56.1 --victim-ip 192.168.56.10
+sudo python3 attacks/arp_spoof_lab.py --claimed-ip 192.168.0.1 --victim-ip 192.168.0.137
 ```
 
 Optional settings:
 
 ```bash
 sudo python3 attacks/arp_spoof_lab.py \
-  --claimed-ip 192.168.56.1 \
-  --victim-ip 192.168.56.10 \
+  --claimed-ip 192.168.0.1 \
+  --victim-ip 192.168.0.137 \
   --original-mac aa:bb:cc:dd:ee:ff \
   --changed-mac 00:11:22:33:44:55
 ```
@@ -308,7 +308,7 @@ evidence/
 If you see `Permission denied` or packets do not send:
 
 ```bash
-sudo python3 attacks/script_name.py --target 192.168.56.10
+sudo python3 attacks/script_name.py --target 192.168.0.137
 ```
 
 If Python says Scapy is missing:
@@ -327,3 +327,4 @@ If no IDS alert appears:
 - Check Wireshark to confirm the packets reached the monitored interface.
 
 If the script rejects the IP address, use a private lab IP only. Public targets are intentionally blocked.
+

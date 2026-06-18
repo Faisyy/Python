@@ -17,6 +17,24 @@ UDP_THRESHOLD = 100   # UDP packets per window
 # How long to stay silent about the same (source, alert type) after firing.
 ALERT_COOLDOWN = 60   # seconds
 
+DEFAULT_THRESHOLDS = {
+    "time_window": TIME_WINDOW,
+    "syn_threshold": SYN_THRESHOLD,
+    "icmp_threshold": ICMP_THRESHOLD,
+    "port_threshold": PORT_THRESHOLD,
+    "udp_threshold": UDP_THRESHOLD,
+    "alert_cooldown": ALERT_COOLDOWN,
+}
+
+DETECTION_ENABLED = {
+    "dos": True,
+    "port_scan": True,
+    "tcp_flag": True,
+    "reverse_shell": True,
+    "arp_mitm": True,
+}
+DEFAULT_DETECTION_ENABLED = DETECTION_ENABLED.copy()
+
 # Ports strongly associated with malware C2 / backdoors. 8080 is excluded
 # because it is common legitimate dev/proxy/alt-HTTP traffic.
 SUSPICIOUS_PORTS = {4444, 1337, 31337, 6666, 9001}
@@ -41,6 +59,36 @@ def reset_state():
     port_tracker.clear()
     arp_tracker.clear()
     _last_alert.clear()
+
+
+def configure_detection(enabled=None, thresholds=None):
+    """Update rule toggles and thresholds at runtime from the GUI."""
+    global TIME_WINDOW, SYN_THRESHOLD, ICMP_THRESHOLD
+    global PORT_THRESHOLD, UDP_THRESHOLD, ALERT_COOLDOWN
+
+    if enabled:
+        for rule, value in enabled.items():
+            if rule in DETECTION_ENABLED:
+                DETECTION_ENABLED[rule] = bool(value)
+
+    if thresholds:
+        if "time_window" in thresholds:
+            TIME_WINDOW = int(thresholds["time_window"])
+        if "syn_threshold" in thresholds:
+            SYN_THRESHOLD = int(thresholds["syn_threshold"])
+        if "icmp_threshold" in thresholds:
+            ICMP_THRESHOLD = int(thresholds["icmp_threshold"])
+        if "port_threshold" in thresholds:
+            PORT_THRESHOLD = int(thresholds["port_threshold"])
+        if "udp_threshold" in thresholds:
+            UDP_THRESHOLD = int(thresholds["udp_threshold"])
+        if "alert_cooldown" in thresholds:
+            ALERT_COOLDOWN = int(thresholds["alert_cooldown"])
+
+
+def reset_detection_config():
+    """Restore default toggles and thresholds."""
+    configure_detection(DEFAULT_DETECTION_ENABLED, DEFAULT_THRESHOLDS)
 
 
 def _prune_times(tracker, src_ip, now):
@@ -191,7 +239,7 @@ def _check_arp_spoofing(packet, now, app):
 def detect(packet, app):
     now = time.time()
 
-    if ARP in packet:
+    if DETECTION_ENABLED["arp_mitm"] and ARP in packet:
         _check_arp_spoofing(packet, now, app)
 
     if IP not in packet:
@@ -201,9 +249,13 @@ def detect(packet, app):
     if _is_ignored(src_ip):
         return
 
-    _check_syn_flood(packet, src_ip, now, app)
-    _check_icmp_flood(packet, src_ip, now, app)
-    _check_port_scan(packet, src_ip, now, app)
-    _check_udp_flood(packet, src_ip, now, app)
-    _check_suspicious_port(packet, src_ip, now, app)
-    _check_tcp_flag_scan(packet, src_ip, now, app)
+    if DETECTION_ENABLED["dos"]:
+        _check_syn_flood(packet, src_ip, now, app)
+        _check_icmp_flood(packet, src_ip, now, app)
+        _check_udp_flood(packet, src_ip, now, app)
+    if DETECTION_ENABLED["port_scan"]:
+        _check_port_scan(packet, src_ip, now, app)
+    if DETECTION_ENABLED["reverse_shell"]:
+        _check_suspicious_port(packet, src_ip, now, app)
+    if DETECTION_ENABLED["tcp_flag"]:
+        _check_tcp_flag_scan(packet, src_ip, now, app)

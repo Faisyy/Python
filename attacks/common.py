@@ -3,7 +3,7 @@ import ipaddress
 import os
 
 
-PRIVATE_TARGET_HELP = "Private lab target IP address, for example 192.168.56.10"
+PRIVATE_TARGET_HELP = "Private lab target IP address, for example 192.168.0.137"
 
 
 def positive_int(value):
@@ -38,3 +38,4 @@ def add_common_args(parser, target=True):
     if target:
         parser.add_argument("--target", required=True, type=validate_lab_target, help=PRIVATE_TARGET_HELP)
     return parser
+
