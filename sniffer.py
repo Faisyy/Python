@@ -1,10 +1,39 @@
-from scapy.all import PcapReader, sniff
 import threading
+
+from scapy.all import PcapReader, get_if_list, sniff
+
 from detector import detect
 
-# ─── Sniff Control ────────────────────────────────────────────────────────────
 _sniff_thread = None
 _stop_flag = threading.Event()
+
+
+def list_adapters():
+    """Return Scapy sniffable adapters as display/value dictionaries."""
+    try:
+        from scapy.arch.windows import get_windows_if_list
+
+        adapters = []
+        for iface in get_windows_if_list():
+            guid = iface.get("guid")
+            name = iface.get("name") or "Unknown"
+            description = iface.get("description") or ""
+            ips = ", ".join(iface.get("ips") or [])
+            value = f"\\Device\\NPF_{guid}" if guid else name
+
+            label_parts = [name]
+            if description and description != name:
+                label_parts.append(description)
+            if ips:
+                label_parts.append(ips)
+            adapters.append({"label": " | ".join(label_parts), "value": value})
+
+        if adapters:
+            return adapters
+    except Exception:
+        pass
+
+    return [{"label": iface, "value": iface} for iface in get_if_list()]
 
 
 def _process_packet(packet, app):
@@ -13,17 +42,21 @@ def _process_packet(packet, app):
     detect(packet, app)
 
 
-# ─── Live Sniffing ────────────────────────────────────────────────────────────
-def start_sniff(app):
-    """Start live packet capture on all interfaces. Must run as Administrator."""
+def start_sniff(app, iface=None):
+    """Start live packet capture. Must run as Administrator on Windows."""
     _stop_flag.clear()
 
     def _sniff():
-        sniff(
-            prn=lambda pkt: _process_packet(pkt, app),
-            store=False,
-            stop_filter=lambda _: _stop_flag.is_set()
-        )
+        try:
+            sniff(
+                iface=iface or None,
+                prn=lambda pkt: _process_packet(pkt, app),
+                store=False,
+                stop_filter=lambda _: _stop_flag.is_set(),
+            )
+        except Exception as exc:
+            app._log(f"[ERROR] Live sniff failed: {exc}")
+            app.lbl_status.configure(text="Status: Sniff error", text_color="#ff6b6b")
 
     global _sniff_thread
     _sniff_thread = threading.Thread(target=_sniff, daemon=True)
@@ -35,7 +68,6 @@ def stop_sniff():
     _stop_flag.set()
 
 
-# ─── PCAP Analysis ────────────────────────────────────────────────────────────
 def analyse_pcap(filepath, app):
     try:
         app._log("[*] Starting analysis...")

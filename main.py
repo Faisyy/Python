@@ -15,12 +15,14 @@ class IDSApp(ctk.CTk):
     def __init__(self):
         super().__init__()
         self.title("Python-Based IDS - Group 8A")
-        self.geometry("900x600")
+        self.geometry("900x650")
         self.resizable(False, False)
         self.is_sniffing = False
         self.packet_count = 0
         self.alert_count = 0
+        self.adapter_map = {}
         self._build_ui()
+        self.refresh_adapters()
         self.log_file = init_logger()        
         self._log(f"[*] Logging to: {self.log_file}")
 
@@ -58,6 +60,31 @@ class IDSApp(ctk.CTk):
         )
         self.lbl_status.pack(side="right", padx=20)
 
+        # Network adapter selector
+        adapter_frame = ctk.CTkFrame(self, corner_radius=8)
+        adapter_frame.pack(fill="x", padx=15, pady=(0, 8))
+        ctk.CTkLabel(
+            adapter_frame,
+            text="Sniff Adapter",
+            font=ctk.CTkFont(size=12, weight="bold")
+        ).pack(side="left", padx=(15, 8), pady=8)
+        self.adapter_combo = ctk.CTkComboBox(
+            adapter_frame,
+            width=610,
+            values=["Scanning adapters..."],
+            state="readonly"
+        )
+        self.adapter_combo.pack(side="left", padx=8, pady=8)
+        self.btn_refresh_adapters = ctk.CTkButton(
+            adapter_frame,
+            text="Refresh",
+            width=100,
+            fg_color="#3a3a3a",
+            hover_color="#4a4a4a",
+            command=self.refresh_adapters
+        )
+        self.btn_refresh_adapters.pack(side="right", padx=15, pady=8)
+
         # Detection coverage label
         self.lbl_coverage = ctk.CTkLabel(
             self,
@@ -78,7 +105,7 @@ class IDSApp(ctk.CTk):
             self, text="Alert Log", font=ctk.CTkFont(size=13, weight="bold")
         ).pack(anchor="w", padx=18, pady=(0, 2))
         self.alert_box = ctk.CTkTextbox(
-            self, width=870, height=360,
+            self, width=870, height=340,
             font=ctk.CTkFont(family="Courier New", size=12),
             fg_color="#0d0d0d", text_color="#00ff88", corner_radius=8
         )
@@ -144,23 +171,71 @@ class IDSApp(ctk.CTk):
         self.progress_bar.configure(mode="determinate")
         self.progress_bar.set(1.0)
 
+    def refresh_adapters(self):
+        from sniffer import list_adapters
+
+        try:
+            adapters = list_adapters()
+        except Exception as exc:
+            self.adapter_map = {}
+            self.adapter_combo.configure(values=["Adapter scan failed"])
+            self.adapter_combo.set("Adapter scan failed")
+            self._log(f"[ERROR] Could not scan adapters: {exc}")
+            return
+
+        if not adapters:
+            self.adapter_map = {}
+            self.adapter_combo.configure(values=["No adapters found"])
+            self.adapter_combo.set("No adapters found")
+            self._log("[ERROR] No sniff adapters found.")
+            return
+
+        self.adapter_map = {adapter["label"]: adapter["value"] for adapter in adapters}
+        labels = list(self.adapter_map.keys())
+        self.adapter_combo.configure(values=labels)
+
+        current = self.adapter_combo.get()
+        if current not in self.adapter_map:
+            preferred = self._preferred_adapter_label(labels)
+            self.adapter_combo.set(preferred)
+        self._log(f"[*] Found {len(labels)} sniff adapter(s).")
+
+    def _preferred_adapter_label(self, labels):
+        for label in labels:
+            lower = label.lower()
+            if any(token in lower for token in ("virtualbox", "vmware", "host-only", "ethernet")):
+                return label
+        return labels[0]
+
+    def selected_adapter(self):
+        label = self.adapter_combo.get()
+        return label, self.adapter_map.get(label)
+
     def start_sniffing(self):
         if self.is_sniffing:
+            return
+        adapter_label, adapter_value = self.selected_adapter()
+        if not adapter_value:
+            self._log("[ERROR] Select a sniff adapter before starting live sniff.")
             return
         self.is_sniffing = True
         self.btn_start.configure(state="disabled")
         self.btn_stop.configure(state="normal")
+        self.adapter_combo.configure(state="disabled")
+        self.btn_refresh_adapters.configure(state="disabled")
         self.lbl_status.configure(text="Status: Sniffing...", text_color="#00ff88")
-        self._log("[*] Live sniffing started...")
+        self._log(f"[*] Live sniffing started on: {adapter_label}")
         
         from sniffer import start_sniff
-        sniff_thread = threading.Thread(target=start_sniff, args=(self,), daemon=True)
+        sniff_thread = threading.Thread(target=start_sniff, args=(self, adapter_value), daemon=True)
         sniff_thread.start()
 
     def stop_sniffing(self):
         self.is_sniffing = False
         self.btn_start.configure(state="normal")
         self.btn_stop.configure(state="disabled")
+        self.adapter_combo.configure(state="readonly")
+        self.btn_refresh_adapters.configure(state="normal")
         self.lbl_status.configure(text="Status: Stopped", text_color="#ff6b6b")
         self._log("[*] Sniffing stopped.")
         

@@ -69,11 +69,14 @@ For live sniffing, run PowerShell, Command Prompt, or the batch file as Administ
 ## How to Use
 
 1. Start the app with `python main.py`.
-2. Use **Start Live Sniff** to monitor live traffic.
-3. Use **Load PCAP** to analyze a `.pcap` or `.pcapng` file.
-4. Watch **Packets Captured**, **Alerts**, and the alert log.
-5. Use **Stop** to stop live sniffing or interrupt analysis.
-6. Use **Clear Log** to reset the visible counters and detector state.
+2. Choose the correct **Sniff Adapter** from the dropdown.
+3. Use **Start Live Sniff** to monitor live traffic.
+4. Use **Load PCAP** to analyze a `.pcap` or `.pcapng` file.
+5. Watch **Packets Captured**, **Alerts**, and the alert log.
+6. Use **Stop** to stop live sniffing or interrupt analysis.
+7. Use **Clear Log** to reset the visible counters and detector state.
+
+If Kali is attacking the Windows IDS machine, choose the adapter with the Windows IP address that Kali is targeting. For VirtualBox or VMware labs, this is often a host-only, bridged, VMware, VirtualBox, or Ethernet adapter.
 
 Each app session creates a log file like:
 
