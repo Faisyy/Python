@@ -1,0 +1,285 @@
+=== IDS Session Started: 2026-06-16 19:50:45 ===
+[2026-06-16 19:50:57] [ALERT] UDP FLOOD detected from 192.168.88.61 (101 UDP packets in 5s)
+[2026-06-16 19:50:57] [ALERT] UDP FLOOD detected from 192.168.88.1 (101 UDP packets in 5s)
+[2026-06-16 19:50:58] [ALERT] ICMP FLOOD detected from 192.168.89.1 (51 packets in 5s)
+[2026-06-16 19:51:00] [ALERT] UDP FLOOD detected from 192.168.89.2 (101 UDP packets in 5s)
+[2026-06-16 19:51:57] [ALERT] UDP FLOOD detected from 192.168.88.61 (553 UDP packets in 5s)
+[2026-06-16 19:51:57] [ALERT] UDP FLOOD detected from 192.168.88.1 (551 UDP packets in 5s)
+[2026-06-16 19:51:58] [ALERT] ICMP FLOOD detected from 192.168.89.1 (123 packets in 5s)
+[2026-06-16 19:52:00] [ALERT] UDP FLOOD detected from 192.168.89.2 (123 UDP packets in 5s)
+[2026-06-16 19:52:57] [ALERT] UDP FLOOD detected from 192.168.88.61 (561 UDP packets in 5s)
+[2026-06-16 19:52:57] [ALERT] UDP FLOOD detected from 192.168.88.1 (560 UDP packets in 5s)
+[2026-06-16 19:52:58] [ALERT] ICMP FLOOD detected from 192.168.89.1 (122 packets in 5s)
+[2026-06-16 19:53:00] [ALERT] UDP FLOOD detected from 192.168.89.2 (124 UDP packets in 5s)
+[2026-06-16 19:53:11] [ALERT] UDP FLOOD detected from 192.168.88.52 (101 UDP packets in 5s)
+[2026-06-16 19:53:12] [ALERT] ICMP FLOOD detected from 21.2.2.2 (51 packets in 5s)
+[2026-06-16 19:53:15] [ALERT] SYN FLOOD detected from 192.168.88.52 (101 SYNs in 5s)
+[2026-06-16 19:53:24] [ALERT] SYN FLOOD detected from 192.168.2.137 (101 SYNs in 5s)
+[2026-06-16 19:53:24] [ALERT] PORT SCAN detected from 192.168.2.137 (16 unique ports in 5s)
+[2026-06-16 19:53:24] [ALERT] PORT SCAN detected from 192.168.88.75 (16 unique ports in 5s)
+[2026-06-16 19:53:24] [ALERT] PORT SCAN detected from 192.168.88.20 (16 unique ports in 5s)
+[2026-06-16 19:53:24] [ALERT] PORT SCAN detected from 192.168.88.61 (16 unique ports in 5s)
+[2026-06-16 19:53:24] [ALERT] PORT SCAN detected from 192.168.88.50 (16 unique ports in 5s)
+[2026-06-16 19:53:24] [ALERT] PORT SCAN detected from 192.168.88.115 (16 unique ports in 5s)
+[2026-06-16 19:53:24] [ALERT] PORT SCAN detected from 192.168.88.51 (16 unique ports in 5s)
+[2026-06-16 19:53:24] [ALERT] PORT SCAN detected from 192.168.88.95 (16 unique ports in 5s)
+[2026-06-16 19:53:24] [ALERT] PORT SCAN detected from 192.168.88.30 (16 unique ports in 5s)
+[2026-06-16 19:53:24] [ALERT] PORT SCAN detected from 192.168.88.49 (16 unique ports in 5s)
+[2026-06-16 19:53:24] [ALERT] PORT SCAN detected from 192.168.88.100 (16 unique ports in 5s)
+[2026-06-16 19:53:24] [ALERT] PORT SCAN detected from 192.168.88.60 (16 unique ports in 5s)
+[2026-06-16 19:53:25] [ALERT] SUSPICIOUS PORT traffic from 192.168.2.137 -> port 6666
+[2026-06-16 19:53:26] [ALERT] SUSPICIOUS PORT traffic from 192.168.2.137 -> port 4444
+[2026-06-16 19:53:29] [ALERT] SUSPICIOUS PORT traffic from 192.168.2.137 -> port 31337
+[2026-06-16 19:53:30] [ALERT] SUSPICIOUS PORT traffic from 192.168.2.137 -> port 9001
+[2026-06-16 19:54:14] [ALERT] UDP FLOOD detected from 192.168.88.61 (101 UDP packets in 5s)
+[2026-06-16 19:54:14] [ALERT] UDP FLOOD detected from 192.168.88.1 (101 UDP packets in 5s)
+[2026-06-16 19:54:16] [ALERT] ICMP FLOOD detected from 192.168.89.1 (51 packets in 5s)
+[2026-06-16 19:54:16] [ALERT] PORT SCAN detected from 192.168.2.199 (16 unique ports in 5s)
+[2026-06-16 19:54:16] [ALERT] SYN FLOOD detected from 192.168.2.199 (101 SYNs in 5s)
+[2026-06-16 19:54:20] [ALERT] SUSPICIOUS PORT traffic from 192.168.2.199 -> port 1337
+[2026-06-16 19:54:50] [ALERT] SYN FLOOD detected from 192.168.2.133 (101 SYNs in 5s)
+[2026-06-16 19:54:50] [ALERT] PORT SCAN detected from 192.168.88.20 (16 unique ports in 5s)
+[2026-06-16 19:54:51] [ALERT] PORT SCAN detected from 192.168.88.30 (16 unique ports in 5s)
+[2026-06-16 19:54:51] [ALERT] SUSPICIOUS PORT traffic from 192.168.2.199 -> port 9001
+[2026-06-16 19:54:52] [ALERT] SYN FLOOD detected from 192.168.2.166 (101 SYNs in 5s)
+[2026-06-16 19:54:52] [ALERT] PORT SCAN detected from 192.168.2.166 (16 unique ports in 5s)
+[2026-06-16 19:54:52] [ALERT] PORT SCAN detected from 192.168.88.60 (16 unique ports in 5s)
+[2026-06-16 19:54:53] [ALERT] SUSPICIOUS PORT traffic from 192.168.2.166 -> port 9001
+[2026-06-16 19:54:54] [ALERT] SUSPICIOUS PORT traffic from 192.168.2.166 -> port 6666
+[2026-06-16 19:55:02] [ALERT] SUSPICIOUS PORT traffic from 192.168.2.166 -> port 4444
+[2026-06-16 19:55:07] [ALERT] SUSPICIOUS PORT traffic from 192.168.2.166 -> port 31337
+[2026-06-16 19:55:11] [ALERT] PORT SCAN detected from 192.168.88.61 (16 unique ports in 5s)
+[2026-06-16 19:55:11] [ALERT] PORT SCAN detected from 192.168.88.25 (16 unique ports in 5s)
+[2026-06-16 19:55:11] [ALERT] PORT SCAN detected from 192.168.88.95 (16 unique ports in 5s)
+[2026-06-16 19:55:12] [ALERT] PORT SCAN detected from 192.168.88.51 (16 unique ports in 5s)
+[2026-06-16 19:55:13] [ALERT] PORT SCAN detected from 192.168.88.75 (16 unique ports in 5s)
+[2026-06-16 19:55:15] [ALERT] SUSPICIOUS PORT traffic from 192.168.88.61 -> port 1337
+[2026-06-16 19:55:16] [ALERT] PORT SCAN detected from 192.168.2.199 (1920 unique ports in 5s)
+[2026-06-16 19:55:16] [ALERT] SYN FLOOD detected from 192.168.2.199 (2898 SYNs in 5s)
+[2026-06-16 19:55:18] [ALERT] PORT SCAN detected from 192.168.88.49 (16 unique ports in 5s)
+[2026-06-16 19:55:18] [ALERT] PORT SCAN detected from 192.168.88.50 (16 unique ports in 5s)
+[2026-06-16 19:55:18] [ALERT] ICMP FLOOD detected from 192.168.2.133 (51 packets in 5s)
+[2026-06-16 19:55:20] [ALERT] UDP FLOOD detected from 192.168.2.133 (101 UDP packets in 5s)
+[2026-06-16 19:55:21] [ALERT] ICMP FLOOD detected from 192.168.88.61 (51 packets in 5s)
+[2026-06-16 19:55:21] [ALERT] ICMP FLOOD detected from 192.168.88.75 (51 packets in 5s)
+[2026-06-16 19:55:21] [ALERT] ICMP FLOOD detected from 192.168.88.60 (51 packets in 5s)
+[2026-06-16 19:55:21] [ALERT] ICMP FLOOD detected from 192.168.88.95 (51 packets in 5s)
+[2026-06-16 19:55:21] [ALERT] ICMP FLOOD detected from 192.168.88.20 (51 packets in 5s)
+[2026-06-16 19:55:22] [ALERT] PORT SCAN detected from 192.168.88.115 (16 unique ports in 5s)
+[2026-06-16 19:55:24] [ALERT] ICMP FLOOD detected from 192.168.2.166 (51 packets in 5s)
+[2026-06-16 19:55:41] [ALERT] PORT SCAN detected from 192.168.2.44 (16 unique ports in 5s)
+[2026-06-16 19:55:41] [ALERT] SYN FLOOD detected from 192.168.2.44 (101 SYNs in 5s)
+[2026-06-16 19:55:51] [ALERT] SYN FLOOD detected from 192.168.2.133 (390 SYNs in 5s)
+[2026-06-16 19:55:51] [ALERT] PORT SCAN detected from 192.168.88.30 (20 unique ports in 5s)
+[2026-06-16 19:55:52] [ALERT] PORT SCAN detected from 192.168.88.60 (25 unique ports in 5s)
+[2026-06-16 19:55:53] [ALERT] SUSPICIOUS PORT traffic from 192.168.2.199 -> port 6666
+[2026-06-16 19:56:11] [ALERT] PORT SCAN detected from 192.168.88.61 (18 unique ports in 5s)
+[2026-06-16 19:56:11] [ALERT] PORT SCAN detected from 192.168.88.95 (17 unique ports in 5s)
+[2026-06-16 19:56:13] [ALERT] SYN FLOOD detected from 192.168.2.166 (101 SYNs in 5s)
+[2026-06-16 19:56:16] [ALERT] PORT SCAN detected from 192.168.2.199 (2171 unique ports in 5s)
+[2026-06-16 19:56:16] [ALERT] SYN FLOOD detected from 192.168.2.199 (3320 SYNs in 5s)
+[2026-06-16 19:56:35] [ALERT] SUSPICIOUS PORT traffic from 192.168.2.199 -> port 31337
+[2026-06-16 19:57:16] [ALERT] PORT SCAN detected from 192.168.2.199 (684 unique ports in 5s)
+[2026-06-16 19:57:16] [ALERT] SYN FLOOD detected from 192.168.2.199 (880 SYNs in 5s)
+[2026-06-16 19:58:16] [ALERT] PORT SCAN detected from 192.168.2.199 (2356 unique ports in 5s)
+[2026-06-16 19:58:16] [ALERT] SYN FLOOD detected from 192.168.2.199 (3613 SYNs in 5s)
+[2026-06-16 19:58:16] [ALERT] SUSPICIOUS PORT traffic from 192.168.2.199 -> port 1337
+[2026-06-16 19:58:20] [ALERT] SUSPICIOUS PORT traffic from 192.168.2.199 -> port 31337
+[2026-06-16 19:58:23] [ALERT] SUSPICIOUS PORT traffic from 192.168.2.199 -> port 4444
+[2026-06-16 19:59:03] [ALERT] SUSPICIOUS PORT traffic from 192.168.2.199 -> port 6666
+[2026-06-16 19:59:06] [ALERT] SUSPICIOUS PORT traffic from 192.168.2.199 -> port 9001
+[2026-06-16 19:59:16] [ALERT] PORT SCAN detected from 192.168.2.199 (453 unique ports in 5s)
+[2026-06-16 19:59:16] [ALERT] SYN FLOOD detected from 192.168.2.199 (3524 SYNs in 5s)
+[2026-06-16 19:59:21] [ALERT] SUSPICIOUS PORT traffic from 192.168.2.199 -> port 31337
+[2026-06-16 19:59:26] [ALERT] SUSPICIOUS PORT traffic from 192.168.2.199 -> port 4444
+[2026-06-16 19:59:36] [ALERT] PORT SCAN detected from 192.168.88.30 (16 unique ports in 5s)
+[2026-06-16 19:59:36] [ALERT] PORT SCAN detected from 192.168.88.115 (16 unique ports in 5s)
+[2026-06-16 19:59:36] [ALERT] PORT SCAN detected from 192.168.88.60 (16 unique ports in 5s)
+[2026-06-16 19:59:37] [ALERT] PORT SCAN detected from 192.168.88.61 (16 unique ports in 5s)
+[2026-06-16 19:59:37] [ALERT] PORT SCAN detected from 192.168.88.95 (16 unique ports in 5s)
+[2026-06-16 19:59:37] [ALERT] PORT SCAN detected from 192.168.88.51 (16 unique ports in 5s)
+[2026-06-16 19:59:38] [ALERT] PORT SCAN detected from 192.168.88.75 (16 unique ports in 5s)
+[2026-06-16 19:59:51] [ALERT] ICMP FLOOD detected from 192.168.2.199 (51 packets in 5s)
+[2026-06-16 19:59:53] [ALERT] PORT SCAN detected from 192.168.88.25 (16 unique ports in 5s)
+[2026-06-16 20:00:00] [ALERT] PORT SCAN detected from 192.168.88.49 (16 unique ports in 5s)
+[2026-06-16 20:00:16] [ALERT] PORT SCAN detected from 192.168.2.199 (2384 unique ports in 5s)
+[2026-06-16 20:00:16] [ALERT] SYN FLOOD detected from 192.168.2.199 (4136 SYNs in 5s)
+[2026-06-16 20:00:53] [ALERT] SUSPICIOUS PORT traffic from 192.168.2.199 -> port 6666
+[2026-06-16 20:01:16] [ALERT] PORT SCAN detected from 192.168.2.199 (1813 unique ports in 5s)
+[2026-06-16 20:01:16] [ALERT] SYN FLOOD detected from 192.168.2.199 (4178 SYNs in 5s)
+[2026-06-16 20:01:37] [ALERT] SUSPICIOUS PORT traffic from 192.168.2.199 -> port 31337
+[2026-06-16 20:02:16] [ALERT] PORT SCAN detected from 192.168.2.199 (1742 unique ports in 5s)
+[2026-06-16 20:02:16] [ALERT] SYN FLOOD detected from 192.168.2.199 (4159 SYNs in 5s)
+[2026-06-16 20:02:30] [ALERT] SUSPICIOUS PORT traffic from 192.168.2.199 -> port 4444
+[2026-06-16 20:02:39] [ALERT] ICMP FLOOD detected from 192.168.2.199 (51 packets in 5s)
+[2026-06-16 20:03:16] [ALERT] SUSPICIOUS PORT traffic from 192.168.2.199 -> port 1337
+[2026-06-16 20:03:16] [ALERT] PORT SCAN detected from 192.168.2.199 (1655 unique ports in 5s)
+[2026-06-16 20:03:16] [ALERT] SYN FLOOD detected from 192.168.2.199 (4078 SYNs in 5s)
+[2026-06-16 20:03:23] [ALERT] SUSPICIOUS PORT traffic from 192.168.2.199 -> port 9001
+[2026-06-16 20:04:11] [ALERT] UDP FLOOD detected from 192.168.88.1 (101 UDP packets in 5s)
+[2026-06-16 20:04:11] [ALERT] UDP FLOOD detected from 192.168.88.61 (101 UDP packets in 5s)
+[2026-06-16 20:04:11] [ALERT] ICMP FLOOD detected from 192.168.89.1 (51 packets in 5s)
+[2026-06-16 20:04:12] [ALERT] PORT SCAN detected from 192.168.2.137 (16 unique ports in 5s)
+[2026-06-16 20:04:12] [ALERT] PORT SCAN detected from 192.168.88.50 (16 unique ports in 5s)
+[2026-06-16 20:04:12] [ALERT] SYN FLOOD detected from 192.168.2.137 (101 SYNs in 5s)
+[2026-06-16 20:04:48] [ALERT] SUSPICIOUS PORT traffic from 192.168.2.137 -> port 31337
+[2026-06-16 20:05:10] [ALERT] SUSPICIOUS PORT traffic from 192.168.2.137 -> port 4444
+[2026-06-16 20:05:12] [ALERT] PORT SCAN detected from 192.168.2.137 (2912 unique ports in 5s)
+[2026-06-16 20:05:12] [ALERT] PORT SCAN detected from 192.168.88.50 (2760 unique ports in 5s)
+[2026-06-16 20:05:12] [ALERT] SYN FLOOD detected from 192.168.2.137 (2979 SYNs in 5s)
+[2026-06-16 20:05:42] [ALERT] SUSPICIOUS PORT traffic from 192.168.2.137 -> port 1337
+[2026-06-16 20:05:59] [ALERT] SUSPICIOUS PORT traffic from 192.168.2.137 -> port 9001
+[2026-06-16 20:05:59] [ALERT] SUSPICIOUS PORT traffic from 192.168.2.137 -> port 6666
+[2026-06-16 20:06:05] [ALERT] UDP FLOOD detected from 192.168.88.61 (101 UDP packets in 5s)
+[2026-06-16 20:06:05] [ALERT] UDP FLOOD detected from 192.168.88.1 (101 UDP packets in 5s)
+[2026-06-16 20:06:06] [ALERT] ICMP FLOOD detected from 192.168.89.1 (51 packets in 5s)
+[2026-06-16 20:06:08] [ALERT] UDP FLOOD detected from 192.168.89.2 (101 UDP packets in 5s)
+[2026-06-16 20:06:10] [ALERT] PORT SCAN detected from 10.10.10.10 (16 unique ports in 5s)
+[2026-06-16 20:06:11] [ALERT] SYN FLOOD detected from 10.10.10.30 (101 SYNs in 5s)
+[2026-06-16 20:06:27] [ALERT] PORT SCAN detected from 192.168.2.21 (16 unique ports in 5s)
+[2026-06-16 20:06:27] [ALERT] PORT SCAN detected from 192.168.88.60 (16 unique ports in 5s)
+[2026-06-16 20:06:27] [ALERT] SYN FLOOD detected from 192.168.2.21 (101 SYNs in 5s)
+[2026-06-16 20:06:27] [ALERT] SUSPICIOUS PORT traffic from 192.168.2.21 -> port 31337
+[2026-06-16 20:06:27] [ALERT] SUSPICIOUS PORT traffic from 192.168.2.21 -> port 6666
+[2026-06-16 20:06:28] [ALERT] SUSPICIOUS PORT traffic from 192.168.2.21 -> port 4444
+[2026-06-16 20:06:28] [ALERT] SUSPICIOUS PORT traffic from 192.168.2.21 -> port 9001
+[2026-06-16 20:06:31] [ALERT] PORT SCAN detected from 192.168.2.22 (16 unique ports in 5s)
+[2026-06-16 20:06:31] [ALERT] SYN FLOOD detected from 192.168.2.22 (101 SYNs in 5s)
+[2026-06-16 20:06:34] [ALERT] PORT SCAN detected from 192.168.88.61 (16 unique ports in 5s)
+[2026-06-16 20:06:34] [ALERT] PORT SCAN detected from 192.168.88.30 (16 unique ports in 5s)
+[2026-06-16 20:06:35] [ALERT] PORT SCAN detected from 192.168.88.49 (16 unique ports in 5s)
+[2026-06-16 20:06:35] [ALERT] PORT SCAN detected from 192.168.88.50 (16 unique ports in 5s)
+[2026-06-16 20:06:35] [ALERT] PORT SCAN detected from 192.168.88.25 (16 unique ports in 5s)
+[2026-06-16 20:06:35] [ALERT] PORT SCAN detected from 192.168.88.51 (16 unique ports in 5s)
+[2026-06-16 20:06:36] [ALERT] SUSPICIOUS PORT traffic from 192.168.2.22 -> port 31337
+[2026-06-16 20:06:37] [ALERT] SUSPICIOUS PORT traffic from 192.168.2.22 -> port 4444
+[2026-06-16 20:06:45] [ALERT] SUSPICIOUS PORT traffic from 192.168.2.22 -> port 6666
+[2026-06-16 20:06:47] [ALERT] SUSPICIOUS PORT traffic from 192.168.2.22 -> port 9001
+[2026-06-16 20:07:10] [ALERT] PORT SCAN detected from 10.10.10.10 (23 unique ports in 5s)
+[2026-06-16 20:07:13] [ALERT] PORT SCAN detected from 192.168.88.95 (16 unique ports in 5s)
+[2026-06-16 20:07:14] [ALERT] PORT SCAN detected from 192.168.88.75 (16 unique ports in 5s)
+[2026-06-16 20:07:17] [ALERT] SYN FLOOD detected from 192.168.2.137 (101 SYNs in 5s)
+[2026-06-16 20:07:18] [ALERT] ICMP FLOOD detected from 192.168.2.22 (51 packets in 5s)
+[2026-06-16 20:07:20] [ALERT] PORT SCAN detected from 192.168.88.115 (16 unique ports in 5s)
+[2026-06-16 20:07:22] [ALERT] PORT SCAN detected from 192.168.2.137 (16 unique ports in 5s)
+[2026-06-16 20:07:27] [ALERT] PORT SCAN detected from 192.168.88.60 (2975 unique ports in 5s)
+[2026-06-16 20:07:33] [ALERT] SUSPICIOUS PORT traffic from 192.168.2.137 -> port 1337
+[2026-06-16 20:07:51] [ALERT] SUSPICIOUS PORT traffic from 192.168.2.137 -> port 4444
+[2026-06-16 20:07:51] [ALERT] SUSPICIOUS PORT traffic from 192.168.2.137 -> port 31337
+[2026-06-16 20:08:11] [ALERT] SUSPICIOUS PORT traffic from 192.168.2.137 -> port 9001
+[2026-06-16 20:08:17] [ALERT] SYN FLOOD detected from 192.168.2.137 (2971 SYNs in 5s)
+[2026-06-16 20:08:22] [ALERT] PORT SCAN detected from 192.168.2.137 (2896 unique ports in 5s)
+[2026-06-16 20:08:27] [ALERT] PORT SCAN detected from 192.168.88.60 (2882 unique ports in 5s)
+[2026-06-16 20:09:00] [ALERT] SUSPICIOUS PORT traffic from 192.168.2.137 -> port 6666
+[2026-06-16 20:09:18] [ALERT] SYN FLOOD detected from 192.168.2.137 (2951 SYNs in 5s)
+[2026-06-16 20:09:19] [ALERT] PORT SCAN detected from 192.168.88.115 (16 unique ports in 5s)
+[2026-06-16 20:09:19] [ALERT] PORT SCAN detected from 192.168.88.95 (16 unique ports in 5s)
+[2026-06-16 20:09:19] [ALERT] PORT SCAN detected from 10.10.10.10 (16 unique ports in 5s)
+[2026-06-16 20:09:21] [ALERT] SYN FLOOD detected from 10.10.10.30 (101 SYNs in 5s)
+[2026-06-16 20:09:21] [ALERT] UDP FLOOD detected from 192.168.88.61 (101 UDP packets in 5s)
+[2026-06-16 20:09:21] [ALERT] UDP FLOOD detected from 192.168.88.1 (101 UDP packets in 5s)
+[2026-06-16 20:09:22] [ALERT] PORT SCAN detected from 192.168.2.137 (606 unique ports in 5s)
+[2026-06-16 20:09:23] [ALERT] PORT SCAN detected from 192.168.2.22 (16 unique ports in 5s)
+[2026-06-16 20:09:23] [ALERT] SYN FLOOD detected from 192.168.2.22 (101 SYNs in 5s)
+[2026-06-16 20:09:27] [ALERT] PORT SCAN detected from 192.168.88.60 (37 unique ports in 5s)
+[2026-06-16 20:10:19] [ALERT] PORT SCAN detected from 10.10.10.10 (60 unique ports in 5s)
+[2026-06-16 20:10:23] [ALERT] PORT SCAN detected from 192.168.2.22 (607 unique ports in 5s)
+[2026-06-16 20:10:23] [ALERT] SYN FLOOD detected from 192.168.2.22 (2297 SYNs in 5s)
+[2026-06-16 20:10:53] [ALERT] SUSPICIOUS PORT traffic from 192.168.2.22 -> port 31337
+[2026-06-16 20:11:19] [ALERT] PORT SCAN detected from 10.10.10.10 (66 unique ports in 5s)
+[2026-06-16 20:11:23] [ALERT] PORT SCAN detected from 192.168.2.22 (990 unique ports in 5s)
+[2026-06-16 20:11:23] [ALERT] SYN FLOOD detected from 192.168.2.22 (3461 SYNs in 5s)
+[2026-06-16 20:11:46] [ALERT] UDP FLOOD detected from 192.168.2.22 (101 UDP packets in 5s)
+[2026-06-16 20:11:46] [ALERT] UDP FLOOD detected from 192.168.88.30 (101 UDP packets in 5s)
+[2026-06-16 20:12:19] [ALERT] PORT SCAN detected from 10.10.10.10 (51 unique ports in 5s)
+[2026-06-16 20:12:23] [ALERT] PORT SCAN detected from 192.168.2.22 (1050 unique ports in 5s)
+[2026-06-16 20:12:23] [ALERT] SYN FLOOD detected from 192.168.2.22 (3416 SYNs in 5s)
+[2026-06-16 20:13:19] [ALERT] PORT SCAN detected from 10.10.10.10 (56 unique ports in 5s)
+[2026-06-16 20:13:23] [ALERT] PORT SCAN detected from 192.168.2.22 (1141 unique ports in 5s)
+[2026-06-16 20:13:23] [ALERT] SYN FLOOD detected from 192.168.2.22 (3386 SYNs in 5s)
+[2026-06-16 20:13:58] [ALERT] PORT SCAN detected from 192.168.2.53 (16 unique ports in 5s)
+[2026-06-16 20:13:58] [ALERT] PORT SCAN detected from 192.168.88.30 (16 unique ports in 5s)
+[2026-06-16 20:13:59] [ALERT] SYN FLOOD detected from 192.168.2.53 (101 SYNs in 5s)
+[2026-06-16 20:13:59] [ALERT] SUSPICIOUS PORT traffic from 192.168.2.53 -> port 6666
+[2026-06-16 20:14:00] [ALERT] SUSPICIOUS PORT traffic from 192.168.2.53 -> port 9001
+[2026-06-16 20:14:00] [ALERT] SUSPICIOUS PORT traffic from 192.168.2.53 -> port 31337
+[2026-06-16 20:14:00] [ALERT] SUSPICIOUS PORT traffic from 192.168.2.53 -> port 4444
+[2026-06-16 20:14:16] [ALERT] PORT SCAN detected from 192.168.88.51 (16 unique ports in 5s)
+[2026-06-16 20:14:16] [ALERT] PORT SCAN detected from 192.168.88.60 (16 unique ports in 5s)
+[2026-06-16 20:14:16] [ALERT] PORT SCAN detected from 192.168.88.50 (16 unique ports in 5s)
+[2026-06-16 20:14:16] [ALERT] PORT SCAN detected from 192.168.88.115 (16 unique ports in 5s)
+[2026-06-16 20:14:16] [ALERT] PORT SCAN detected from 192.168.88.49 (16 unique ports in 5s)
+[2026-06-16 20:14:16] [ALERT] PORT SCAN detected from 192.168.88.75 (16 unique ports in 5s)
+[2026-06-16 20:14:16] [ALERT] PORT SCAN detected from 192.168.88.61 (16 unique ports in 5s)
+[2026-06-16 20:14:16] [ALERT] PORT SCAN detected from 192.168.88.95 (16 unique ports in 5s)
+[2026-06-16 20:14:16] [ALERT] PORT SCAN detected from 192.168.88.25 (16 unique ports in 5s)
+[2026-06-16 20:14:20] [ALERT] PORT SCAN detected from 10.10.10.10 (68 unique ports in 5s)
+[2026-06-16 20:14:34] [ALERT] PORT SCAN detected from 192.168.2.22 (16 unique ports in 5s)
+[2026-06-16 20:14:35] [ALERT] SYN FLOOD detected from 192.168.2.22 (101 SYNs in 5s)
+[2026-06-16 20:14:49] [ALERT] SUSPICIOUS PORT traffic from 192.168.2.22 -> port 31337
+[2026-06-16 20:14:49] [ALERT] SUSPICIOUS PORT traffic from 192.168.2.22 -> port 6666
+[2026-06-16 20:14:49] [ALERT] SUSPICIOUS PORT traffic from 192.168.2.22 -> port 9001
+[2026-06-16 20:14:49] [ALERT] SUSPICIOUS PORT traffic from 192.168.2.22 -> port 4444
+[2026-06-16 20:14:53] [ALERT] SYN FLOOD detected from 10.10.10.30 (101 SYNs in 5s)
+[2026-06-16 20:14:55] [ALERT] ICMP FLOOD detected from 192.168.89.1 (51 packets in 5s)
+[2026-06-16 20:15:20] [ALERT] PORT SCAN detected from 10.10.10.10 (70 unique ports in 5s)
+[2026-06-16 20:15:20] [ALERT] ICMP FLOOD detected from 192.168.2.64 (51 packets in 5s)
+[2026-06-16 20:15:34] [ALERT] PORT SCAN detected from 192.168.2.22 (1195 unique ports in 5s)
+[2026-06-16 20:15:35] [ALERT] SYN FLOOD detected from 192.168.2.22 (3255 SYNs in 5s)
+[2026-06-16 20:16:03] [ALERT] UDP FLOOD detected from 192.168.88.61 (101 UDP packets in 5s)
+[2026-06-16 20:16:03] [ALERT] UDP FLOOD detected from 192.168.88.1 (101 UDP packets in 5s)
+[2026-06-16 20:16:04] [ALERT] SYN FLOOD detected from 10.10.10.30 (101 SYNs in 5s)
+[2026-06-16 20:16:05] [ALERT] PORT SCAN detected from 192.168.88.115 (16 unique ports in 5s)
+[2026-06-16 20:16:06] [ALERT] ICMP FLOOD detected from 192.168.89.1 (51 packets in 5s)
+[2026-06-16 20:16:07] [ALERT] SYN FLOOD detected from 192.168.2.53 (101 SYNs in 5s)
+[2026-06-16 20:16:07] [ALERT] PORT SCAN detected from 192.168.88.49 (16 unique ports in 5s)
+[2026-06-16 20:16:07] [ALERT] PORT SCAN detected from 192.168.88.50 (16 unique ports in 5s)
+[2026-06-16 20:16:07] [ALERT] PORT SCAN detected from 192.168.2.53 (16 unique ports in 5s)
+[2026-06-16 20:16:07] [ALERT] PORT SCAN detected from 192.168.88.61 (16 unique ports in 5s)
+[2026-06-16 20:16:07] [ALERT] PORT SCAN detected from 192.168.88.20 (16 unique ports in 5s)
+[2026-06-16 20:16:07] [ALERT] PORT SCAN detected from 192.168.88.60 (16 unique ports in 5s)
+[2026-06-16 20:16:07] [ALERT] PORT SCAN detected from 192.168.88.75 (16 unique ports in 5s)
+[2026-06-16 20:16:07] [ALERT] PORT SCAN detected from 192.168.88.95 (16 unique ports in 5s)
+[2026-06-16 20:16:07] [ALERT] PORT SCAN detected from 192.168.88.51 (16 unique ports in 5s)
+[2026-06-16 20:16:08] [ALERT] PORT SCAN detected from 192.168.88.25 (16 unique ports in 5s)
+[2026-06-16 20:16:09] [ALERT] SUSPICIOUS PORT traffic from 192.168.2.53 -> port 9001
+[2026-06-16 20:16:09] [ALERT] SUSPICIOUS PORT traffic from 192.168.2.53 -> port 6666
+[2026-06-16 20:16:12] [ALERT] SUSPICIOUS PORT traffic from 192.168.2.53 -> port 4444
+[2026-06-16 20:16:12] [ALERT] SUSPICIOUS PORT traffic from 192.168.2.53 -> port 31337
+[2026-06-16 20:16:13] [ALERT] PORT SCAN detected from 192.168.88.30 (16 unique ports in 5s)
+[2026-06-16 20:16:23] [ALERT] PORT SCAN detected from 10.10.10.10 (16 unique ports in 5s)
+[2026-06-16 20:16:29] [ALERT] ICMP FLOOD detected from 21.2.2.2 (51 packets in 5s)
+[2026-06-16 20:16:30] [ALERT] SYN FLOOD detected from 192.168.88.53 (101 SYNs in 5s)
+[2026-06-16 20:17:05] [ALERT] PORT SCAN detected from 192.168.88.115 (386 unique ports in 5s)
+[2026-06-16 20:17:07] [ALERT] SYN FLOOD detected from 192.168.2.53 (3495 SYNs in 5s)
+[2026-06-16 20:17:07] [ALERT] PORT SCAN detected from 192.168.88.49 (219 unique ports in 5s)
+[2026-06-16 20:17:07] [ALERT] PORT SCAN detected from 192.168.88.50 (433 unique ports in 5s)
+[2026-06-16 20:17:07] [ALERT] PORT SCAN detected from 192.168.2.53 (846 unique ports in 5s)
+[2026-06-16 20:17:07] [ALERT] PORT SCAN detected from 192.168.88.61 (391 unique ports in 5s)
+[2026-06-16 20:17:07] [ALERT] PORT SCAN detected from 192.168.88.20 (531 unique ports in 5s)
+[2026-06-16 20:17:07] [ALERT] PORT SCAN detected from 192.168.88.60 (252 unique ports in 5s)
+[2026-06-16 20:17:07] [ALERT] PORT SCAN detected from 192.168.88.95 (393 unique ports in 5s)
+[2026-06-16 20:17:07] [ALERT] PORT SCAN detected from 192.168.88.51 (332 unique ports in 5s)
+[2026-06-16 20:17:08] [ALERT] PORT SCAN detected from 192.168.88.25 (290 unique ports in 5s)
+[2026-06-16 20:17:08] [ALERT] PORT SCAN detected from 192.168.88.75 (151 unique ports in 5s)
+[2026-06-16 20:17:10] [ALERT] SUSPICIOUS PORT traffic from 192.168.2.53 -> port 9001
+[2026-06-16 20:17:20] [ALERT] SUSPICIOUS PORT traffic from 192.168.2.53 -> port 4444
+[2026-06-16 20:17:20] [ALERT] PORT SCAN detected from 192.168.88.30 (16 unique ports in 5s)
+[2026-06-16 20:17:21] [ALERT] SUSPICIOUS PORT traffic from 192.168.2.53 -> port 6666
+[2026-06-16 20:17:28] [ALERT] SUSPICIOUS PORT traffic from 192.168.2.53 -> port 31337
+[2026-06-16 20:17:46] [ALERT] UDP FLOOD detected from 192.168.88.1 (101 UDP packets in 5s)
+[2026-06-16 20:17:46] [ALERT] UDP FLOOD detected from 192.168.88.61 (101 UDP packets in 5s)
+[2026-06-16 20:17:46] [ALERT] ICMP FLOOD detected from 192.168.89.1 (51 packets in 5s)
+[2026-06-16 20:17:47] [ALERT] UDP FLOOD detected from 10.100.152.128 (101 UDP packets in 5s)
+[2026-06-16 20:17:47] [ALERT] UDP FLOOD detected from 77.245.33.76 (101 UDP packets in 5s)
+[2026-06-16 20:17:50] [ALERT] UDP FLOOD detected from 192.168.89.2 (101 UDP packets in 5s)
+[2026-06-16 20:17:50] [ALERT] SYN FLOOD detected from 192.168.2.137 (101 SYNs in 5s)
+[2026-06-16 20:17:50] [ALERT] PORT SCAN detected from 192.168.2.137 (16 unique ports in 5s)
+[2026-06-16 20:17:51] [ALERT] SUSPICIOUS PORT traffic from 192.168.2.137 -> port 31337
+[2026-06-16 20:17:54] [ALERT] SUSPICIOUS PORT traffic from 192.168.2.137 -> port 4444
+[2026-06-16 20:17:55] [ALERT] SUSPICIOUS PORT traffic from 192.168.2.137 -> port 9001
+[2026-06-16 20:17:55] [ALERT] SUSPICIOUS PORT traffic from 192.168.2.137 -> port 6666
+[2026-06-16 20:18:07] [ALERT] PORT SCAN detected from 192.168.88.60 (73 unique ports in 5s)
+[2026-06-16 20:18:07] [ALERT] PORT SCAN detected from 192.168.88.61 (149 unique ports in 5s)
+[2026-06-16 20:18:08] [ALERT] PORT SCAN detected from 192.168.88.95 (16 unique ports in 5s)
+[2026-06-16 20:18:09] [ALERT] PORT SCAN detected from 192.168.88.254 (16 unique ports in 5s)
