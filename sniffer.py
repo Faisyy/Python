@@ -1,4 +1,4 @@
-from scapy.all import sniff, PcapReader, IP, TCP, UDP, ICMP
+from scapy.all import PcapReader, sniff
 import threading
 from detector import detect
 
@@ -9,9 +9,8 @@ _stop_flag = threading.Event()
 
 def _process_packet(packet, app):
     """Callback fired for every captured packet."""
-    if IP in packet:
-        app.increment_packets()
-        detect(packet, app)
+    app.increment_packets()
+    detect(packet, app)
 
 
 # ─── Live Sniffing ────────────────────────────────────────────────────────────

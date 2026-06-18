@@ -58,6 +58,18 @@ class IDSApp(ctk.CTk):
         )
         self.lbl_status.pack(side="right", padx=20)
 
+        # Detection coverage label
+        self.lbl_coverage = ctk.CTkLabel(
+            self,
+            text=(
+                "Detection Coverage: DoS | Port Scan | TCP Flag Scan | "
+                "Possible Reverse Shell | ARP Spoofing/MITM"
+            ),
+            font=ctk.CTkFont(size=11),
+            text_color="#b8c7d9"
+        )
+        self.lbl_coverage.pack(anchor="w", padx=18, pady=(0, 6))
+
         # Alert log
         self.progress_bar = ctk.CTkProgressBar(self, width=870)
         self.progress_bar.pack(padx=15, pady=(0, 5))
@@ -66,7 +78,7 @@ class IDSApp(ctk.CTk):
             self, text="Alert Log", font=ctk.CTkFont(size=13, weight="bold")
         ).pack(anchor="w", padx=18, pady=(0, 2))
         self.alert_box = ctk.CTkTextbox(
-            self, width=870, height=380,
+            self, width=870, height=360,
             font=ctk.CTkFont(family="Courier New", size=12),
             fg_color="#0d0d0d", text_color="#00ff88", corner_radius=8
         )
