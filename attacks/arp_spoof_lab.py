@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import argparse
 
-from common import add_common_args, require_lab_confirmation, validate_lab_target, warn_if_not_root
+from common import add_common_args, validate_lab_target, warn_if_not_root
 from scapy.all import ARP, send
 
 
@@ -35,7 +35,6 @@ def main():
     parser.add_argument("--count", type=int, default=1, help="ARP replies per MAC mapping.")
     args = parser.parse_args()
 
-    require_lab_confirmation(args)
     warn_if_not_root()
 
     print(

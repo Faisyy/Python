@@ -2,7 +2,7 @@
 import argparse
 import random
 
-from common import add_common_args, positive_int, require_lab_confirmation, warn_if_not_root
+from common import add_common_args, positive_int, warn_if_not_root
 from scapy.all import IP, TCP, RandShort, send
 
 
@@ -16,7 +16,6 @@ def main():
     parser.add_argument("--interval", type=float, default=0.01, help="Delay between packets.")
     args = parser.parse_args()
 
-    require_lab_confirmation(args)
     warn_if_not_root()
 
     print(f"Sending {args.count} SYN packets to {args.target}:{args.port}")

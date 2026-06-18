@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import argparse
 
-from common import add_common_args, positive_int, require_lab_confirmation, warn_if_not_root
+from common import add_common_args, positive_int, warn_if_not_root
 from scapy.all import IP, UDP, Raw, send
 
 
@@ -15,7 +15,6 @@ def main():
     parser.add_argument("--interval", type=float, default=0.01, help="Delay between packets.")
     args = parser.parse_args()
 
-    require_lab_confirmation(args)
     warn_if_not_root()
 
     print(f"Sending {args.count} UDP packets to {args.target}:{args.port}")

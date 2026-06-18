@@ -160,12 +160,12 @@ These tests build Scapy packets in memory and do not require live network access
 
 For report and presentation evidence, test only inside a controlled lab using your own VM, your own laptop, or lecturer-approved targets.
 
-The `attacks/` folder contains Python scripts that can be run from Kali VM to generate each sample traffic category. Each script requires `--confirm-lab` and only accepts private or loopback IP targets.
+The `attacks/` folder contains Python scripts that can be run from Kali VM to generate each sample traffic category. Each script only accepts private or loopback IP targets.
 
 Example:
 
 ```bash
-sudo python3 attacks/syn_flood.py --target 192.168.56.10 --confirm-lab
+sudo python3 attacks/syn_flood.py --target 192.168.56.10
 ```
 
 Recommended evidence to collect for each test category:
