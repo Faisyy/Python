@@ -4,7 +4,7 @@ This folder contains Python scripts that generate controlled lab traffic for tes
 
 Run these scripts from Kali Linux against only your own VM, your own laptop, or a lecturer-approved lab target. Do not run them against public IP addresses, university systems, websites, or third-party networks.
 
-The scripts no longer require `--confirm-lab`, but they still only accept private or loopback IP addresses such as:
+The scripts only accept private or loopback IP addresses such as:
 
 ```text
 192.168.x.x

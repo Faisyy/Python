@@ -13,10 +13,11 @@ Important: this IDS is for controlled lab and educational use. Alerts should be 
 - Timestamped alert logging.
 - Packet and alert counters.
 - Real-time attack dashboard with category counters and alert mix chart.
-- Packets-per-second graph, adapter diagnostics, and top source IP panel.
+- Packets-per-second graph, capture health indicator, session timer, adapter diagnostics, and top source IP panel.
 - Recent alerts table with severity, type, source, destination, and details.
 - Alert review notes for marking rows as `Needs Review`, `Confirmed`, or `False Positive`.
 - CSV export for the current session's alerts.
+- Automatic session summary export when live sniffing is stopped.
 - Optional sound notification when an alert is detected.
 - High severity banner with a **Noted** dismiss button.
 - Alert table filters by severity and alert type.
@@ -83,13 +84,13 @@ For live sniffing, run PowerShell, Command Prompt, or the batch file as Administ
 2. Choose the correct **Sniff Adapter** from the dropdown.
 3. Use **Start Live Sniff** to monitor live traffic.
 4. Use **Load PCAP** to analyze a `.pcap` or `.pcapng` file.
-5. Watch **Packets Captured**, **Alerts**, and the alert log.
-6. Use the **Sound Alert** toggle to enable or disable alert sounds, and the sound button to select an `.mp3`, `.wav`, or `.wma` file.
+5. Watch **Packets Captured**, **Alerts**, **Runtime**, **Health**, and the alert log.
+6. Use the **Sound Settings** tab to enable or disable alert sounds, and to select an `.mp3`, `.wav`, or `.wma` file.
 7. Use **Stop** to stop live sniffing or interrupt analysis.
 8. Use filters in **Recent Alerts** to show alerts by severity or attack type.
 9. Mark selected alerts as `Confirmed`, `False Positive`, or `Needs Review` with optional notes.
-10. Use **Export CSV** to save the current session's recent alerts to `exports/`; the exports folder opens after export.
-11. Use **Export Summary** to save a text report with packet counts, alert counts, top sources, and recent alerts.
+10. Use **Export CSV** to save the current session's recent alerts, including review status and notes, to `exports/`; the exports folder opens after export.
+11. Use **Export Summary** to save a text report with packet counts, alert counts, top sources, review notes, and recent alerts.
 12. Use the **Detection Settings** tab to toggle rule groups or tune thresholds.
 13. Use the **PCAP Replay** tab to choose Fast, Normal, or Slow PCAP analysis speed.
 14. Use **Clear Log** to reset the visible counters, dashboard, recent alerts table, and detector state.
@@ -226,4 +227,3 @@ Do not run attack-style tests against public IPs, university servers, websites, 
 - It detects suspicious indicators, not confirmed malware, reverse shells, or MITM attacks.
 - Thresholds may need tuning for busy networks.
 - Wireshark or another packet analysis tool should be used to verify important alerts.
-
