@@ -19,6 +19,7 @@ ctk.set_default_color_theme("blue")
 
 
 class IDSApp(ctk.CTk):
+    # Initialize app state, build the GUI, and start periodic updates.
     def __init__(self):
         super().__init__()
         self.title("Python-Based IDS")
@@ -81,6 +82,7 @@ class IDSApp(ctk.CTk):
         self.after(1000, self._update_packet_rate)
         self.after(1000, self._update_session_status)
 
+    # Build all visual sections, tabs, controls, and action buttons.
     def _build_ui(self):
         self.configure(fg_color="#0b1020")
         self.grid_rowconfigure(1, weight=1)
@@ -429,6 +431,7 @@ class IDSApp(ctk.CTk):
         )
         self.btn_summary.pack(side="left", padx=8)
 
+    # Create a reusable status metric label.
     def _metric_label(self, parent, text, color):
         return ctk.CTkLabel(
             parent,
@@ -441,6 +444,7 @@ class IDSApp(ctk.CTk):
             pady=6,
         )
 
+    # Create a small reusable information label.
     def _small_info_label(self, parent, text):
         return ctk.CTkLabel(
             parent,
@@ -450,9 +454,11 @@ class IDSApp(ctk.CTk):
             anchor="w",
         )
 
+    # Return the selected alert sound filename.
     def _sound_file_label(self):
         return os.path.basename(self.sound_file)
 
+    # Build the recent alerts table, filters, and review controls.
     def _build_alert_table(self, parent):
         filter_bar = ctk.CTkFrame(parent, fg_color="#050816", corner_radius=8)
         filter_bar.grid(row=0, column=0, sticky="ew", padx=6, pady=(6, 0))
@@ -591,6 +597,7 @@ class IDSApp(ctk.CTk):
         scrollbar.grid(row=1, column=1, sticky="ns", padx=(0, 6), pady=6)
         self.alert_table.bind("<<TreeviewSelect>>", self._load_selected_alert_review)
 
+    # Build detection rule toggles and threshold settings.
     def _build_settings_panel(self, parent):
         container = ctk.CTkScrollableFrame(parent, fg_color="#050816", corner_radius=8)
         container.grid(row=0, column=0, sticky="nsew", padx=6, pady=6)
@@ -686,6 +693,7 @@ class IDSApp(ctk.CTk):
             command=self.apply_detection_settings,
         ).pack(side="left")
 
+    # Apply detection toggles and threshold values to the detector.
     def apply_detection_settings(self, silent=False):
         enabled = {key: var.get() for key, var in self.rule_vars.items()}
         thresholds = {}
@@ -706,6 +714,7 @@ class IDSApp(ctk.CTk):
         if not silent:
             self._log("[*] Detection settings applied. Detector state reset.")
 
+    # Restore detector rule toggles and thresholds to default values.
     def restore_detection_defaults(self):
         detector.reset_detection_config()
         detector.reset_state()
@@ -718,6 +727,7 @@ class IDSApp(ctk.CTk):
             entry.insert(0, str(defaults[key]))
         self._log("[*] Detection settings restored to defaults. Detector state reset.")
 
+    # Build PCAP replay speed controls.
     def _build_replay_panel(self, parent):
         panel = ctk.CTkFrame(parent, fg_color="#050816", corner_radius=8)
         panel.grid(row=0, column=0, sticky="nsew", padx=6, pady=6)
@@ -749,6 +759,7 @@ class IDSApp(ctk.CTk):
             text_color="#94a3b8",
         ).pack(anchor="w", padx=14, pady=(0, 14))
 
+    # Build alert sound notification controls.
     def _build_sound_settings_panel(self, parent):
         panel = ctk.CTkFrame(parent, fg_color="#050816", corner_radius=8)
         panel.grid(row=0, column=0, sticky="nsew", padx=6, pady=6)
@@ -791,6 +802,7 @@ class IDSApp(ctk.CTk):
             text_color="#94a3b8",
         ).pack(anchor="w", padx=14, pady=(0, 14))
 
+    # Append a message to the on-screen alert log safely.
     def _log(self, message):
         if threading.get_ident() != self.ui_thread_id:
             self.after(0, self._log, message)
@@ -800,6 +812,7 @@ class IDSApp(ctk.CTk):
         self.alert_box.see("end")
         self.alert_box.configure(state="disabled")
 
+    # Receive detector alerts and update all alert-related UI elements.
     def log_alert(self, message):
         if threading.get_ident() != self.ui_thread_id:
             self.after(0, self.log_alert, message)
@@ -824,6 +837,7 @@ class IDSApp(ctk.CTk):
         self._play_alert_sound()
         self._log(f"[ALERT] {message}")
 
+    # Increment packet counters and update last packet timing.
     def increment_packets(self):
         if threading.get_ident() != self.ui_thread_id:
             self.after(0, self.increment_packets)
@@ -835,14 +849,17 @@ class IDSApp(ctk.CTk):
         self.lbl_packets.configure(text=f"Packets Captured: {self.packet_count}")
         self.lbl_last_packet.configure(text=f"Last Packet: {self.last_packet_time}")
 
+    # Set the progress bar to a specific value.
     def set_progress(self, value):
         self.progress_bar.set(value)
         self.update_idletasks()
 
+    # Start indeterminate progress animation during PCAP analysis.
     def start_progress_animation(self):
         self.progress_bar.configure(mode="indeterminate")
         self.progress_bar.start()
 
+    # Stop progress animation and mark progress as complete.
     def stop_progress_animation(self):
         if threading.get_ident() != self.ui_thread_id:
             self.after(0, self.stop_progress_animation)
@@ -851,6 +868,7 @@ class IDSApp(ctk.CTk):
         self.progress_bar.configure(mode="determinate")
         self.progress_bar.set(1.0)
 
+    # Classify an alert message into a dashboard category.
     def _classify_alert(self, message):
         if "DoS Detected" in message:
             return "DoS"
@@ -864,6 +882,7 @@ class IDSApp(ctk.CTk):
             return "ARP/MITM"
         return "Other"
 
+    # Convert an alert category into a severity level.
     def _severity_for_category(self, category):
         if category in {"DoS", "Reverse Shell", "ARP/MITM"}:
             return "High"
@@ -871,6 +890,7 @@ class IDSApp(ctk.CTk):
             return "Medium"
         return "Low"
 
+    # Convert an alert message into a structured table/export record.
     def _build_alert_record(self, message, category, severity):
         source = self._extract_match(message, r"from ([0-9A-Fa-f:.]+)")
         if category == "ARP/MITM":
@@ -888,10 +908,12 @@ class IDSApp(ctk.CTk):
             "details": message,
         }
 
+    # Extract a regex match from alert text.
     def _extract_match(self, text, pattern):
         match = re.search(pattern, text)
         return match.group(1) if match else ""
 
+    # Insert one structured alert record into the alerts table.
     def _insert_alert_record(self, record):
         self.alert_table.insert(
             "",
@@ -913,6 +935,7 @@ class IDSApp(ctk.CTk):
         if rows:
             self.alert_table.see(rows[-1])
 
+    # Check whether an alert record matches the active table filters.
     def _record_matches_filters(self, record):
         severity_filter = self.alert_filter_severity.get()
         type_filter = self.alert_filter_type.get()
@@ -922,6 +945,7 @@ class IDSApp(ctk.CTk):
             return False
         return True
 
+    # Rebuild the alerts table using the current filters.
     def refresh_alert_table(self):
         for row in self.alert_table.get_children():
             self.alert_table.delete(row)
@@ -929,11 +953,13 @@ class IDSApp(ctk.CTk):
             if self._record_matches_filters(record):
                 self._insert_alert_record(record)
 
+    # Reset alert table filters back to All.
     def clear_alert_filters(self):
         self.alert_filter_severity.set("All")
         self.alert_filter_type.set("All")
         self.refresh_alert_table()
 
+    # Save review status and notes for the selected alert.
     def save_alert_review(self):
         selected = self.alert_table.selection()
         if not selected:
@@ -948,6 +974,7 @@ class IDSApp(ctk.CTk):
                 self._log(f"[*] Review saved for alert #{alert_id}: {record['review']}")
                 return
 
+    # Load selected alert review values into the review controls.
     def _load_selected_alert_review(self, _event=None):
         selected = self.alert_table.selection()
         if not selected:
@@ -960,6 +987,7 @@ class IDSApp(ctk.CTk):
                 self.review_note_entry.insert(0, record["note"])
                 return
 
+    # Show a modal high-severity alert notification.
     def show_high_alert_banner(self, record):
         message = f"HIGH ALERT: {record['type']} from {record['source']}\n\n{record['details']}"
         self.dismiss_high_alert()
@@ -1005,12 +1033,14 @@ class IDSApp(ctk.CTk):
         self.high_alert_overlay.lift()
         self._play_high_severity_sound()
 
+    # Dismiss the high-severity alert overlay.
     def dismiss_high_alert(self):
         overlay = getattr(self, "high_alert_overlay", None)
         if overlay is not None:
             overlay.destroy()
             self.high_alert_overlay = None
 
+    # Redraw alert category counters and the alert mix chart.
     def _draw_dashboard(self):
         for category, label in self.category_labels.items():
             label.configure(text=str(self.alert_categories[category]))
@@ -1055,6 +1085,7 @@ class IDSApp(ctk.CTk):
             font=("Segoe UI", 16, "bold"),
         )
 
+    # Update packets-per-second history once per second.
     def _update_packet_rate(self):
         self.current_pps = self.current_second_packets
         self.current_second_packets = 0
@@ -1064,6 +1095,7 @@ class IDSApp(ctk.CTk):
         self._draw_packet_rate_graph()
         self.after(1000, self._update_packet_rate)
 
+    # Update runtime and capture health status once per second.
     def _update_session_status(self):
         if self.session_started_at:
             elapsed = int(time.time() - self.session_started_at)
@@ -1087,6 +1119,7 @@ class IDSApp(ctk.CTk):
             self.lbl_health.configure(text="Health: Idle", text_color="#cbd5e1")
         self.after(1000, self._update_session_status)
 
+    # Redraw the packets-per-second line graph.
     def _draw_packet_rate_graph(self):
         self.pps_canvas.delete("all")
         width = max(self.pps_canvas.winfo_width(), 250)
@@ -1113,6 +1146,7 @@ class IDSApp(ctk.CTk):
             anchor="ne",
         )
 
+    # Update the top source IP list.
     def _draw_top_sources(self):
         top_sources = self.source_counts.most_common(3)
         for index, label in enumerate(self.source_labels):
@@ -1123,6 +1157,7 @@ class IDSApp(ctk.CTk):
             else:
                 label.configure(text="-")
 
+    # Play the selected normal alert sound if enabled.
     def _play_alert_sound(self):
         if not self.sound_enabled.get():
             return
@@ -1135,6 +1170,7 @@ class IDSApp(ctk.CTk):
         self.last_sound_at = now
         threading.Thread(target=self._play_sound_worker, args=(self.sound_file,), daemon=True).start()
 
+    # Play the high-severity sound if enabled.
     def _play_high_severity_sound(self):
         if not self.sound_enabled.get():
             return
@@ -1151,6 +1187,7 @@ class IDSApp(ctk.CTk):
             daemon=True,
         ).start()
 
+    # Play an audio file in a background worker.
     def _play_sound_worker(self, sound_file):
         if sys.platform.startswith("win"):
             escaped = sound_file.replace("'", "''")
@@ -1179,6 +1216,7 @@ class IDSApp(ctk.CTk):
             check=False,
         )
 
+    # Open a file picker to choose the normal alert sound.
     def choose_sound_file(self):
         filepath = filedialog.askopenfilename(
             title="Select Alert Sound",
@@ -1201,6 +1239,7 @@ class IDSApp(ctk.CTk):
             "for intrusion notifications."
         )
 
+    # Refresh available Scapy sniff adapters.
     def refresh_adapters(self):
         from sniffer import list_adapters
 
@@ -1230,6 +1269,7 @@ class IDSApp(ctk.CTk):
         self._update_adapter_diagnostics()
         self._log(f"[*] Found {len(labels)} sniff adapter(s).")
 
+    # Pick a likely useful adapter from the discovered adapter list.
     def _preferred_adapter_label(self, labels):
         for label in labels:
             lower = label.lower()
@@ -1237,16 +1277,19 @@ class IDSApp(ctk.CTk):
                 return label
         return labels[0]
 
+    # Return the selected adapter label and Scapy interface value.
     def selected_adapter(self):
         label = self.adapter_combo.get()
         return label, self.adapter_map.get(label)
 
+    # Update the selected adapter diagnostic label.
     def _update_adapter_diagnostics(self):
         label, _ = self.selected_adapter()
         if len(label) > 60:
             label = label[:57] + "..."
         self.lbl_selected_adapter.configure(text=f"Adapter: {label or '-'}")
 
+    # Start live packet sniffing on the selected adapter.
     def start_sniffing(self):
         if self.is_sniffing:
             return
@@ -1272,6 +1315,7 @@ class IDSApp(ctk.CTk):
         sniff_thread = threading.Thread(target=start_sniff, args=(self, adapter_value), daemon=True)
         sniff_thread.start()
 
+    # Stop live sniffing and auto-save a session summary.
     def stop_sniffing(self):
         self.is_sniffing = False
         self.btn_start.configure(state="normal")
@@ -1288,6 +1332,7 @@ class IDSApp(ctk.CTk):
             self.export_session_summary(auto=True, open_folder=False)
             self.session_summary_autosaved = True
 
+    # Export alert records to a CSV file.
     def export_alerts_csv(self):
         if threading.get_ident() != self.ui_thread_id:
             self.after(0, self.export_alerts_csv)
@@ -1322,6 +1367,7 @@ class IDSApp(ctk.CTk):
         self._log(f"[*] Exported {len(self.alert_records)} alert(s) to: {export_path}")
         self._open_folder("exports")
 
+    # Export a text summary of the current IDS session.
     def export_session_summary(self, auto=False, open_folder=True):
         if threading.get_ident() != self.ui_thread_id:
             self.after(0, self.export_session_summary, auto, open_folder)
@@ -1383,6 +1429,7 @@ class IDSApp(ctk.CTk):
         if open_folder:
             self._open_folder("exports")
 
+    # Open an output folder in the operating system file explorer.
     def _open_folder(self, folder_path):
         os.makedirs(folder_path, exist_ok=True)
         try:
@@ -1395,6 +1442,7 @@ class IDSApp(ctk.CTk):
         except Exception as exc:
             self._log(f"[ERROR] Could not open folder {folder_path}: {exc}")
 
+    # Load and analyze a selected PCAP or PCAPNG file.
     def load_pcap(self):
         filepath = filedialog.askopenfilename(
             title="Select PCAP File",
@@ -1416,6 +1464,7 @@ class IDSApp(ctk.CTk):
             )
             analyse_thread.start()
 
+    # Convert the selected PCAP replay speed into a packet delay.
     def _pcap_replay_delay(self):
         speed = self.pcap_replay_speed.get()
         if speed == "Slow":
@@ -1424,6 +1473,7 @@ class IDSApp(ctk.CTk):
             return 0.002
         return 0
 
+    # Clear visible session data and reset detector state.
     def clear_log(self):
         self.alert_box.configure(state="normal")
         self.alert_box.delete("1.0", "end")
